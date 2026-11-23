@@ -1,4 +1,5 @@
 import {
+  ArrowUpRight,
   Facebook,
   Github,
   Globe,
@@ -58,5 +59,48 @@ export function SocialLinks({
         <SocialIconLink key={social.label} social={social} />
       ))}
     </div>
+  );
+}
+
+export function SocialRowList({
+  items,
+  className,
+}: {
+  items: SocialLink[];
+  className?: string;
+}) {
+  return (
+    <ul className={cn("flex flex-col", className)}>
+      {items.map((social) => {
+        const Icon = iconMap[social.icon];
+        const isExternal = social.href.startsWith("http");
+        return (
+          <li key={social.label}>
+            <a
+              href={social.href}
+              target={isExternal ? "_blank" : undefined}
+              rel={isExternal ? "noopener noreferrer" : undefined}
+              className="group flex items-center justify-between gap-4 border-b border-line py-3.5 transition-colors hover:text-brand"
+            >
+              <span className="flex items-center gap-3">
+                <span className="grid size-8 place-items-center rounded-full border border-line bg-surface/50 text-muted transition-colors group-hover:border-brand/40 group-hover:text-brand">
+                  <Icon className="size-3.5" aria-hidden="true" />
+                </span>
+                <span className="flex flex-col">
+                  <span className="text-[12px] font-medium text-ink transition-colors group-hover:text-brand">
+                    {social.label}
+                  </span>
+                  <span className="text-[11px] text-faint">{social.handle}</span>
+                </span>
+              </span>
+              <ArrowUpRight
+                className="size-3.5 text-faint transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand"
+                aria-hidden="true"
+              />
+            </a>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
