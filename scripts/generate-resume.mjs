@@ -79,15 +79,15 @@ function gap(amount) {
 }
 
 function heading(label) {
-  ensure(40);
-  gap(4);
+  ensure(58);
+  gap(16);
   text(label.toUpperCase(), {
     size: 8.5,
     bold: true,
     color: colors.brand,
     gap: 12,
   });
-  rule(14);
+  rule(16);
 }
 
 function wrap(value, maxChars = 100) {
