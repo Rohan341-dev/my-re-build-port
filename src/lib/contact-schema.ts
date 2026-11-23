@@ -22,7 +22,7 @@ export const contactSchema = z.object({
     .trim()
     .min(20, "Please write at least 20 characters.")
     .max(4000, "Message must be under 4000 characters."),
-  website: z.string().max(0).optional(),
+  website: z.string().max(200).optional(),
   startedAt: z.number().optional(),
 });
 

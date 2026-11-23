@@ -4,8 +4,28 @@ import { ArrowDown, ArrowRight, MapPin } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { ButtonLink } from "@/components/ui/button-link";
 import { SocialLinks } from "@/components/ui/social-links";
-import { Reveal } from "@/components/motion/reveal";
 import { profile } from "@/data/profile";
+import { primarySocials } from "@/data/socials";
+import type { ReactNode } from "react";
+
+function HeroReveal({
+  children,
+  delay = 0,
+  className,
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  return (
+    <div
+      className={className ? `hero-in ${className}` : "hero-in"}
+      style={{ animationDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+}
 
 export function Hero() {
   return (
@@ -27,7 +47,7 @@ export function Hero() {
       <Container className="relative pb-14 pt-12 sm:pt-16 lg:pb-20 lg:pt-20">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-7">
-            <Reveal>
+            <HeroReveal>
               <div className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/60 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.22em] text-muted backdrop-blur">
                 <span className="relative flex size-1.5">
                   <span className="absolute inline-flex size-full animate-ping rounded-full bg-brand opacity-60" />
@@ -35,24 +55,24 @@ export function Hero() {
                 </span>
                 {profile.eyebrow}
               </div>
-            </Reveal>
+            </HeroReveal>
 
-            <Reveal delay={0.06}>
+            <HeroReveal delay={60}>
               <h1 className="mt-7 font-display text-[clamp(2.7rem,6vw,4.85rem)] font-medium leading-[0.98] tracking-[-0.045em] text-ink">
                 Engineering Ideas
                 <br />
                 Into{" "}
                 <span className="text-gradient font-semibold">Reality.</span>
               </h1>
-            </Reveal>
+            </HeroReveal>
 
-            <Reveal delay={0.12}>
+            <HeroReveal delay={120}>
               <p className="mt-7 max-w-xl text-[15px] leading-relaxed text-muted sm:text-[17px]">
                 {profile.intro}
               </p>
-            </Reveal>
+            </HeroReveal>
 
-            <Reveal delay={0.18}>
+            <HeroReveal delay={180}>
               <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2">
                 {profile.identity.map((item, index) => (
                   <span
@@ -72,9 +92,9 @@ export function Hero() {
                   </span>
                 ))}
               </div>
-            </Reveal>
+            </HeroReveal>
 
-            <Reveal delay={0.24}>
+            <HeroReveal delay={240}>
               <div className="mt-9 flex flex-wrap items-center gap-3">
                 <ButtonLink href="/projects" size="lg">
                   Explore My Work
@@ -83,9 +103,9 @@ export function Hero() {
                   Let&apos;s Connect
                 </ButtonLink>
               </div>
-            </Reveal>
+            </HeroReveal>
 
-            <Reveal delay={0.3}>
+            <HeroReveal delay={300}>
               <div className="mt-10 flex flex-col gap-5 border-t border-line pt-5 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-center gap-4 text-[11px] text-faint">
                   <span className="inline-flex items-center gap-1.5">
@@ -95,13 +115,13 @@ export function Hero() {
                   <span className="h-3 w-px bg-line-strong" aria-hidden="true" />
                   <span>{profile.availabilityNote}</span>
                 </div>
-                <SocialLinks />
+                <SocialLinks items={primarySocials} />
               </div>
-            </Reveal>
+            </HeroReveal>
           </div>
 
           <div className="lg:col-span-5">
-            <Reveal delay={0.16} y={24}>
+            <HeroReveal delay={160}>
               <div className="relative mx-auto w-full max-w-[420px] lg:max-w-none">
                 <div
                   className="absolute -inset-2 rounded-[22px] border border-line"
@@ -115,7 +135,7 @@ export function Hero() {
                       fill
                       priority
                       sizes="(max-width: 1024px) 90vw, 420px"
-                      className="object-cover object-[50%_28%] grayscale-[18%] transition duration-700 hover:grayscale-0"
+                      className="object-cover object-[50%_28%] saturate-[0.72] contrast-[1.04] brightness-[0.94] transition duration-700 hover:saturate-100"
                     />
                     <div
                       className="absolute inset-0 bg-gradient-to-t from-[#04100b]/95 via-[#04100b]/10 to-transparent"
@@ -155,11 +175,11 @@ export function Hero() {
                   </div>
                 </div>
               </div>
-            </Reveal>
+            </HeroReveal>
           </div>
         </div>
 
-        <Reveal delay={0.36}>
+        <HeroReveal delay={360}>
           <div className="mt-14 flex items-center justify-between gap-4 border-t border-line pt-5">
             <Link
               href="#work"
@@ -174,7 +194,7 @@ export function Hero() {
               Nepal / 2026
             </span>
           </div>
-        </Reveal>
+        </HeroReveal>
       </Container>
     </section>
   );

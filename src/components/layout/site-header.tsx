@@ -33,10 +33,6 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  useEffect(() => {
     if (!open) return;
 
     const previousOverflow = document.body.style.overflow;
@@ -49,7 +45,10 @@ export function SiteHeader() {
       }
     };
 
+    const onPopState = () => setOpen(false);
+
     document.addEventListener("keydown", onKeyDown);
+    window.addEventListener("popstate", onPopState);
     const focusTimer = window.setTimeout(() => {
       menuRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
     }, 120);
@@ -57,6 +56,7 @@ export function SiteHeader() {
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("popstate", onPopState);
       window.clearTimeout(focusTimer);
     };
   }, [open]);

@@ -13,7 +13,7 @@ export const profile = {
   based: "Based in Nepal",
   timezone: "Asia/Kathmandu",
   email: "rohanyadav234.np@gmail.com",
-  availabilityNote: "Building products and open to thoughtful collaborations.",
+  availabilityNote: "Building and open to collaboration.",
   portrait: {
     src: "/assets/rohan-profile.jpg",
     alt: "Portrait of Rohan Yadav",

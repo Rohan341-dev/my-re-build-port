@@ -75,6 +75,9 @@ export default function RootLayout({
       className={`${inter.variable} ${manrope.variable}`}
     >
       <body className="min-h-dvh bg-bg text-ink antialiased">
+        <noscript>
+          <style>{`[style*="opacity:0"]{opacity:1!important;transform:none!important;}`}</style>
+        </noscript>
         <div id="top" />
         <ThemeProvider>
           <a href="#main" className="skip-link">

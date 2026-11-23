@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   AlertCircle,
@@ -24,13 +24,13 @@ const labelClass =
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [serverMessage, setServerMessage] = useState("");
-  const startedAtRef = useRef<number>(Date.now());
+  const [startedAt, setStartedAt] = useState<number | undefined>(undefined);
 
   const {
     register,
     handleSubmit,
     reset,
-    watch,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<ContactInput>({
     resolver: zodResolver(contactSchema),
@@ -44,7 +44,7 @@ export function ContactForm() {
     mode: "onBlur",
   });
 
-  const message = watch("message") ?? "";
+  const message = useWatch({ control, name: "message" }) ?? "";
 
   async function onSubmit(values: ContactInput) {
     setStatus("idle");
@@ -56,7 +56,7 @@ export function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...values,
-          startedAt: startedAtRef.current,
+          startedAt,
         }),
       });
 
@@ -75,7 +75,7 @@ export function ContactForm() {
 
       setStatus("success");
       reset();
-      startedAtRef.current = Date.now();
+      setStartedAt(undefined);
     } catch {
       setStatus("error");
       setServerMessage(
@@ -114,7 +114,14 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      onFocusCapture={() => {
+        if (!startedAt) setStartedAt(Date.now());
+      }}
+      noValidate
+      className="space-y-5"
+    >
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className={labelClass}>

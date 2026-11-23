@@ -8,12 +8,9 @@ import type { Achievement } from "@/data/achievements";
 
 export function CertificateGallery({ items }: { items: Achievement[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [mounted, setMounted] = useState(false);
   const triggers = useRef<Array<HTMLButtonElement | null>>([]);
   const closeRef = useRef<HTMLButtonElement | null>(null);
   const reduce = useReducedMotion();
-
-  useEffect(() => setMounted(true), []);
 
   const close = useCallback(() => {
     const previous = openIndex;
@@ -116,7 +113,7 @@ export function CertificateGallery({ items }: { items: Achievement[] }) {
       </div>
 
       <AnimatePresence>
-        {mounted && active && (
+        {active && (
           <motion.div
             className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-8"
             initial={reduce ? false : { opacity: 0 }}

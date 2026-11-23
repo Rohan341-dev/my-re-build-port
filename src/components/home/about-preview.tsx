@@ -1,4 +1,4 @@
-import { ArrowUpRight, Quote } from "lucide-react";
+import { Quote } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/motion/reveal";

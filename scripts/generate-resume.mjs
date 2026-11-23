@@ -9,7 +9,6 @@ const outputPath = resolve(outputDir, "resume.pdf");
 const PAGE_WIDTH = 595;
 const PAGE_HEIGHT = 842;
 const MARGIN = 50;
-const CONTENT_WIDTH = PAGE_WIDTH - MARGIN * 2;
 
 const colors = {
   ink: [0.039, 0.082, 0.067],
@@ -198,6 +197,17 @@ for (const project of projects) {
   gap(5);
 }
 
+// Page 2
+newPage();
+heading("Areas of Focus");
+for (const line of [
+  "Full-stack product engineering, from data model and API design to interface and delivery.",
+  "AI, large language model integration, computer vision, and practical automation.",
+  "SaaS architecture, product strategy, and technical team leadership.",
+]) {
+  text(`- ${line}`, { size: 9.2, color: colors.muted, gap: 13 });
+}
+
 heading("Technical Skills");
 for (const [label, value] of [
   ["Languages", "Python, JavaScript, TypeScript, HTML, CSS"],
@@ -230,6 +240,27 @@ for (const item of [
   "Mathematics competitions and olympiad-level problem solving (2024)",
 ]) {
   text(`- ${item}`, { size: 9.2, color: colors.muted, gap: 13 });
+}
+
+heading("Links");
+for (const [label, value] of [
+  ["Portfolio", "rohan.codenestnep.com"],
+  ["GitHub", "github.com/Rohan341-dev"],
+  ["LinkedIn", "linkedin.com/in/rohan-codekage-746656356"],
+  ["Company", "codenestnep.com"],
+]) {
+  ensure(14);
+  pages[pageIndex].push(
+    `BT\n/F2 8.8 Tf\n${colorOp(colors.ink)}\n${MARGIN} ${y} Td\n(${escapePdf(
+      label,
+    )}) Tj\nET`,
+  );
+  pages[pageIndex].push(
+    `BT\n/F1 9 Tf\n${colorOp(colors.muted)}\n${MARGIN + 66} ${y} Td\n(${escapePdf(
+      value,
+    )}) Tj\nET`,
+  );
+  y -= 14;
 }
 
 // Footer on every page
