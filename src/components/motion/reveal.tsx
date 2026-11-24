@@ -20,6 +20,7 @@ export function Reveal({
 
   return (
     <motion.div
+      data-reveal
       className={className}
       initial={reduce ? false : { opacity: 0, y }}
       whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
@@ -70,12 +71,12 @@ export function RevealList({
     >
       {Array.isArray(children) ? (
         children.map((child, index) => (
-          <motion.div key={index} variants={item}>
+          <motion.div key={index} data-reveal variants={item}>
             {child}
           </motion.div>
         ))
       ) : (
-        <motion.div variants={item}>{children}</motion.div>
+        <motion.div data-reveal variants={item}>{children}</motion.div>
       )}
     </motion.div>
   );

@@ -304,6 +304,11 @@
   .animate-marquee {
     animation: none !important;
   }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 @media print {

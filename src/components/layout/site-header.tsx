@@ -191,7 +191,7 @@ export function SiteHeader() {
                   <Download className="size-4" aria-hidden="true" />
                   Download Resume
                 </a>
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                   <SocialLinks />
                   <span className="text-[10px] uppercase tracking-[0.22em] text-faint">
                     Nepal / 2026

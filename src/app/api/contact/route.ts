@@ -96,7 +96,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           ok: false,
-          message: `Email delivery is not configured yet. Please email me directly at ${siteConfig.email}.`,
+          message: "Email delivery is not configured yet. Please use the direct email address below.",
         },
         { status: 503 },
       );
@@ -137,7 +137,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           ok: false,
-          message: `The message could not be delivered. Please email me directly at ${siteConfig.email}.`,
+          message: "The message could not be delivered right now. Please use the direct email address below.",
         },
         { status: 502 },
       );
@@ -149,7 +149,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         ok: false,
-        message: `Something went wrong. Please email me directly at ${siteConfig.email}.`,
+        message: "Something went wrong while sending your message. Please use the direct email address below.",
       },
       { status: 500 },
     );
