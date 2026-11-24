@@ -33,6 +33,14 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  useEffect(() => {
     if (!open) return;
 
     const previousOverflow = document.body.style.overflow;
@@ -72,7 +80,7 @@ export function SiteHeader() {
         )}
       >
         <div className="mx-auto flex h-16 w-full max-w-[1240px] items-center justify-between gap-4 px-5 sm:px-8 lg:px-10">
-          <Logo />
+          <Logo onClick={() => setOpen(false)} />
 
           <nav
             aria-label="Primary"

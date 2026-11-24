@@ -4,13 +4,16 @@ import { cn } from "@/lib/utils";
 export function Logo({
   className,
   compact = false,
+  onClick,
 }: {
   className?: string;
   compact?: boolean;
+  onClick?: () => void;
 }) {
   return (
     <Link
       href="/"
+      onClick={onClick}
       aria-label="Rohan Yadav — home"
       className={cn("group inline-flex items-center gap-3", className)}
     >
