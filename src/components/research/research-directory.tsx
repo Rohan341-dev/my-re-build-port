@@ -83,7 +83,7 @@ export function ResearchDirectory({ items }: { items: ResearchEntry[] }) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={reduce ? undefined : { opacity: 0 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="group grid gap-4 border-b border-line py-6 sm:grid-cols-[88px_1fr] sm:gap-6"
+                className="group grid gap-4 border-b border-line py-6 sm:grid-cols-[112px_1fr] sm:gap-6"
               >
                 <div className="flex items-center gap-3 sm:flex-col sm:items-start sm:gap-2">
                   <span className="font-mono text-[10px] tracking-[0.18em] text-brand">
