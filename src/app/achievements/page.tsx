@@ -15,7 +15,7 @@ import { createMetadata } from "@/lib/seo";
 export const metadata: Metadata = createMetadata({
   title: "Achievements",
   description:
-    "Verified achievements of Rohan Yadav — the M³ Bootcamp at the Mathematical Institute in Nepal, the Leroy AI course, the Nepal 3rd Cloudlet AI Conference, mathematics competitions, and venture milestones.",
+    "Verified achievements of Rohan Yadav — the M³ Bootcamp at the Mathematical Institute in Nepal, the Leroy AI course, the 3rd Cloudlet Tech Conference 2026, mathematics competitions, and venture milestones.",
   path: "/achievements",
 });
 
