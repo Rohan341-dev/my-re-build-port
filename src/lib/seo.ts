@@ -42,7 +42,6 @@ export function createMetadata({
       title: fullTitle,
       description,
       images: [image],
-      creator: "@rohanl2l",
     },
     ...(noIndex ? { robots: { index: false, follow: false } } : {}),
   };
