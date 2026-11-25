@@ -4,7 +4,7 @@ import type { ProjectStatus } from "@/data/projects";
 const statusStyles: Record<ProjectStatus, { dot: string; text: string }> = {
   Launched: { dot: "bg-brand", text: "text-brand" },
   "In Development": { dot: "bg-accent", text: "text-accent" },
-  Prototype: { dot: "bg-[#c9a45c]", text: "text-[#b5904a] dark:text-[#d8b977]" },
+  Prototype: { dot: "bg-[#c9a45c]", text: "text-[#8a6a2f] dark:text-[#d8b977]" },
   Research: { dot: "bg-faint", text: "text-muted" },
 };
 
