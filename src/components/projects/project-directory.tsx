@@ -203,7 +203,7 @@ export function ProjectDirectory({ items }: { items: Project[] }) {
 
       <div className="mt-8">
         {filtered.length > 0 ? (
-          <motion.div layout className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          <motion.div layout className="grid gap-x-6 gap-y-12 sm:grid-cols-2 xl:grid-cols-3">
             <AnimatePresence mode="popLayout" initial={false}>
               {filtered.map((project) => (
                 <motion.div
