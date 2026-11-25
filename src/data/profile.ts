@@ -15,8 +15,8 @@ export const profile = {
   email: "rohanyadav234.np@gmail.com",
   availabilityNote: "Building and open to collaboration.",
   portrait: {
-    src: "/assets/rohan-profile.jpg",
-    alt: "Portrait of Rohan Yadav",
+    src: "/assets/rohan-profile-2026.jpg",
+    alt: "Formal portrait of Rohan Yadav in a suit and traditional Nepali topi",
     width: 1254,
     height: 1254,
   },
